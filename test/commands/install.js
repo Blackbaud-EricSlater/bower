@@ -440,7 +440,6 @@ describe('bower install', function() {
         });
     });
 
-<<<<<<< HEAD
     it('recognizes proxy option in config', function(done) {
         this.timeout(10000);
 
@@ -550,7 +549,9 @@ describe('bower install', function() {
         })
         .then(function() {
             expect(tempDir.read(path.join('bower_components', 'package', 'package.tar'))).to.contain('test');
-=======
+        });
+    });
+
     it('generates a lockFile', function () {
         package.prepare({
             'bower.json': {
@@ -569,7 +570,7 @@ describe('bower install', function() {
 
         return helpers.run(install).then(function() {
             expect(tempDir.readJson('bower.lock')).to.not.be(undefined);
->>>>>>> Creation of lock utility and generation method and add tests
+            expect(tempDir.readJson('bower.lock')).to.not.eql({});
         });
     });
 });
