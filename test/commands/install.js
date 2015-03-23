@@ -553,13 +553,11 @@ describe('bower install', function() {
     });
 
     it('generates a lockFile', function () {
-        package.prepare();
-
         tempDir.prepare({
             'bower.json': {
                 name: 'test',
                 dependencies: {
-                    package: gitPackage.path + '#1.0.0'
+                    packageGit: gitPackage.path + '#1.0.0'
                 }
             }
         });
@@ -573,13 +571,11 @@ describe('bower install', function() {
     });
 
     it('requires a lockFile when production', function (next) {
-        package.prepare();
-
         tempDir.prepare({
             'bower.json': {
                 name: 'test',
                 dependencies: {
-                    package: gitPackage.path + '#1.0.0'
+                    packageGit: gitPackage.path + '#1.0.0'
                 }
             }
         });
@@ -592,13 +588,11 @@ describe('bower install', function() {
     });
 
     it('installs from lockFile when exists', function (next) {
-        package.prepare();
-
         tempDir.prepare({
             'bower.json': {
                 name: 'test',
                 dependencies: {
-                    package: gitPackage.path + '#1.0.0'
+                    packageGit: gitPackage.path + '#1.0.0'
                 }
             },
             'bower.lock': lockFile
@@ -612,13 +606,11 @@ describe('bower install', function() {
     });
 
     it('error when tampering with version number', function (next) {
-        package.prepare();
-
         tempDir.prepare({
             'bower.json': {
                 name: 'test',
                 dependencies: {
-                    package: gitPackage.path + '#1.0.1'
+                    packageGit: gitPackage.path + '#1.0.1'
                 }
             },
             'bower.lock': lockFile
@@ -628,6 +620,27 @@ describe('bower install', function() {
             next(new Error('Error not thrown as expected'));
         }, function() {
             next();
+        });
+    });
+
+    it('new dependencies added in bower.json are installed', function () {
+        package.prepare();
+
+        tempDir.prepare({
+            'bower.json': {
+                name: 'test',
+                dependencies: {
+                    packageGit: gitPackage.path + '#1.0.0',
+                    package: '~0.1.0'
+                }
+            },
+            'bower.lock': lockFile
+        });
+
+        return helpers.run(install).then(function() {
+            expect(tempDir.read('bower_components/package/bower.json')).to.contain('"version": "0.1.2"');
+            expect(tempDir.read('bower.lock')).to.contain('"package"');
+            expect(tempDir.read('bower.lock')).to.contain('"_release": "0.1.2"');
         });
     });
 });
