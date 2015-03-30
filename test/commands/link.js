@@ -10,6 +10,7 @@ describe('bower link', function () {
         'bower.json': {
             name: 'package',
         },
+        'bower.lock': {},
         'index.js': 'Hello World!'
     });
 
@@ -17,6 +18,7 @@ describe('bower link', function () {
         'bower.json': {
             name: 'package2',
         },
+        'bower.lock': {},
         'index.js': 'Welcome World!'
     });
 

@@ -243,7 +243,7 @@ describe('bower update', function () {
         });
 
         return install().then(function() {
-
+            console.log('PACAKGE INSTALLED');
             expect(tempDir.read('bower_components/package/version.txt')).to.contain('1.0.0');
 
             tempDir.prepare({
