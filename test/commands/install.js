@@ -710,7 +710,7 @@ describe('bower install', function() {
         });
 
         return helpers.run(install, [['angular']]).then(function() {
-            expect(tempDir.read('bower_components/angular/bower.json')).to.contain('"version": "1.3.15"');
+            expect(tempDir.read('bower_components/angular/bower.json')).to.contain('"version": "1.4.8"');
             expect(tempDir.read('bower.lock')).to.not.contain('"angular"');
         });
     });
@@ -729,7 +729,7 @@ describe('bower install', function() {
         });
 
         return helpers.run(install, [['angular'], {save: true}]).then(function() {
-            expect(tempDir.read('bower_components/angular/bower.json')).to.contain('"version": "1.3.15"');
+            expect(tempDir.read('bower_components/angular/bower.json')).to.contain('"version": "1.4.8"');
             expect(tempDir.read('bower.lock')).to.contain('"angular"');
             expect(tempDir.read('bower.json')).to.contain('"angular"');
             bowerJson = tempDir.readJson('bower.json');
