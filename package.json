@@ -1,10 +1,10 @@
 {
-  "name": "bower",
-  "version": "1.7.2",
+  "name": "bb-bower",
+  "version": "1.0.0",
   "description": "The browser package manager",
   "author": "Twitter",
   "license": "MIT",
-  "repository": "bower/bower",
+  "repository": "Blackbaud-EricSlater/bower",
   "main": "lib",
   "homepage": "http://bower.io",
   "engines": {
