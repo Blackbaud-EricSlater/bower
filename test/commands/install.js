@@ -51,7 +51,9 @@ describe('bower install', function() {
     }).prepare();
 
     var gitPackage = new helpers.TempDir();
-    
+
+    var lockFile = {};
+
     gitPackage.prepareGit({
         '1.0.0': {
             'bower.json': {
@@ -651,7 +653,7 @@ describe('bower install', function() {
     });
 
     it('new dependencies added in bower.json are installed', function () {
-        package.prepare();
+        mainPackage.prepare();
 
         tempDir.prepare({
             'bower.json': {
@@ -673,7 +675,7 @@ describe('bower install', function() {
     });
 
     it('should install from lock file', function () {
-        package.prepare();
+        mainPackage.prepare();
 
         // Modify the lock file to match
         // test bower.json to test that

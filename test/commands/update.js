@@ -234,7 +234,7 @@ describe('bower update', function () {
         });
     });
 
-    it('updates a package', function() {
+    it('updates a package with all should fail', function(next) {
         tempDir.prepare({
             'bower.json': {
                 name: 'test',
