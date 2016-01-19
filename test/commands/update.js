@@ -153,7 +153,7 @@ describe('bower update', function () {
             }
         });
 
-        return update().then(function() {
+        return install().then(function() {
             return update().then(function() {
                 expect(tempDir.exists('bower_components/package2/bower.json')).to.equal(true);
                 expect(tempDir.exists('bower_components/package3')).to.equal(false);
